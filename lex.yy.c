@@ -751,42 +751,42 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 10 "project.lex"
-{printf("lex found while\n"); return WHILE;}
+{printf("WHILE\n"); return WHILE;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
 #line 11 "project.lex"
-{printf("lex found do\n");return DO;}
+{printf("DO\n");return DO;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
 #line 12 "project.lex"
-{printf("lex found endwhile\n"); return ENDWHILE;}
+{printf("ENDWHILE\n"); return ENDWHILE;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
 #line 13 "project.lex"
-{printf("lex found if\n"); return IF;}
+{printf("IF\n"); return IF;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
 #line 14 "project.lex"
-{printf("lex found then\n"); return THEN;}
+{printf("THEN\n"); return THEN;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
 #line 15 "project.lex"
-{printf("lex found else\n"); return ELSE;}
+{printf("ELSE\n"); return ELSE;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 16 "project.lex"
-{printf("lex found endif\n"); return ENDIF;}
+{printf("ENDIF\n"); return ENDIF;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
 #line 17 "project.lex"
-{printf ("lex found variable\n");
+{printf ("VAR\n");
                  // strcpy (varname, yytext);
                   return VAR;
                 }
@@ -794,57 +794,57 @@ YY_RULE_SETUP
 case 9:
 YY_RULE_SETUP
 #line 21 "project.lex"
-{printf ("lex found plus\n"); return PLUS; }
+{printf ("PLUS\n"); return PLUS; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
 #line 22 "project.lex"
-{printf ("lex found minus\n"); return MINUS; }
+{printf ("MINUS\n"); return MINUS; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
 #line 23 "project.lex"
-{printf ("lex found equal\n"); return EQUAL; }
+{printf ("EQUAL\n"); return EQUAL; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
 #line 24 "project.lex"
-{printf ("lex found semi\n"); return SEMI; }
+{printf ("SEMI\n"); return SEMI; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
 #line 25 "project.lex"
-{printf("lex found less than\n"); return LT;}
+{printf("LT\n"); return LT;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
 #line 26 "project.lex"
-{printf("lex found less than or equal to\n"); return LTEQ;}
+{printf("LTEQ\n"); return LTEQ;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
 #line 27 "project.lex"
-{printf("lex found greater than\n"); return GT;}
+{printf("GT\n"); return GT;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
 #line 28 "project.lex"
-{printf("lex found greater than or equal to\n"); return GTEQ;}
+{printf("GTEQ\n"); return GTEQ;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
 #line 29 "project.lex"
-{printf("lex found spaceship\n"); return SPACESHIP;}
+{printf("SPACESHIP\n"); return SPACESHIP;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
 #line 30 "project.lex"
-{printf("lex found equal to\n"); return EQ;}
+{printf("EQ\n"); return EQ;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
 #line 31 "project.lex"
-{printf("lex found num\n");return NUM;}
+{printf("NUM\n");return NUM;}
 	YY_BREAK
 case 20:
 /* rule 20 can match eol */
@@ -860,7 +860,7 @@ YY_RULE_SETUP
 case 22:
 YY_RULE_SETUP
 #line 34 "project.lex"
-{printf("lex found junk\n"); return JUNK;}
+{printf("JUNK\n"); return JUNK;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP

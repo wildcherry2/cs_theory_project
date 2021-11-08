@@ -7,30 +7,30 @@
 %}
 
 %%
-while		{printf("lex found while\n"); return WHILE;}
-do		{printf("lex found do\n");return DO;}
-endwhile	{printf("lex found endwhile\n"); return ENDWHILE;}
-if		{printf("lex found if\n"); return IF;}
-then		{printf("lex found then\n"); return THEN;}
-else		{printf("lex found else\n"); return ELSE;}
-endif		{printf("lex found endif\n"); return ENDIF;}
-[a-z]+          {printf ("lex found variable\n");
+while		{printf("WHILE\n"); return WHILE;}
+do		{printf("DO\n");return DO;}
+endwhile	{printf("ENDWHILE\n"); return ENDWHILE;}
+if		{printf("IF\n"); return IF;}
+then		{printf("THEN\n"); return THEN;}
+else		{printf("ELSE\n"); return ELSE;}
+endif		{printf("ENDIF\n"); return ENDIF;}
+[a-z]+          {printf ("VAR\n");
                  // strcpy (varname, yytext);
                   return VAR;
                 }
-"+"             {printf ("lex found plus\n"); return PLUS; }
-"-"		{printf ("lex found minus\n"); return MINUS; }
-"="             {printf ("lex found equal\n"); return EQUAL; }
-";"             {printf ("lex found semi\n"); return SEMI; }
-"<"		{printf("lex found less than\n"); return LT;}
-"<="		{printf("lex found less than or equal to\n"); return LTEQ;}
-">"             {printf("lex found greater than\n"); return GT;}
-">="            {printf("lex found greater than or equal to\n"); return GTEQ;}
-"<>"            {printf("lex found spaceship\n"); return SPACESHIP;}
-"=="            {printf("lex found equal to\n"); return EQ;}
-[0-9]+		{printf("lex found num\n");return NUM;}
+"+"             {printf ("PLUS\n"); return PLUS; }
+"-"		{printf ("MINUS\n"); return MINUS; }
+"="             {printf ("EQUAL\n"); return EQUAL; }
+";"             {printf ("SEMI\n"); return SEMI; }
+"<"		{printf("LT\n"); return LT;}
+"<="		{printf("LTEQ\n"); return LTEQ;}
+">"             {printf("GT\n"); return GT;}
+">="            {printf("GTEQ\n"); return GTEQ;}
+"<>"            {printf("SPACESHIP\n"); return SPACESHIP;}
+"=="            {printf("EQ\n"); return EQ;}
+[0-9]+		{printf("NUM\n");return NUM;}
 \n		;
 " "		;
-.		{printf("lex found junk\n"); return JUNK;}
+.		{printf("JUNK\n"); return JUNK;}
 
 %%
