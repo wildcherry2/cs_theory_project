@@ -52,32 +52,44 @@ extern int yydebug;
     VAR = 258,
     EQUAL = 259,
     PLUS = 260,
-    SEMI = 261,
-    LT = 262,
-    NUM = 263,
-    WHILE = 264,
-    DO = 265,
-    ENDWHILE = 266,
-    IF = 267,
-    THEN = 268,
-    ENDIF = 269,
-    ELSE = 270
+    MINUS = 261,
+    SEMI = 262,
+    LT = 263,
+    LTEQ = 264,
+    GT = 265,
+    GTEQ = 266,
+    EQ = 267,
+    SPACESHIP = 268,
+    NUM = 269,
+    WHILE = 270,
+    DO = 271,
+    ENDWHILE = 272,
+    IF = 273,
+    THEN = 274,
+    ENDIF = 275,
+    ELSE = 276
   };
 #endif
 /* Tokens.  */
 #define VAR 258
 #define EQUAL 259
 #define PLUS 260
-#define SEMI 261
-#define LT 262
-#define NUM 263
-#define WHILE 264
-#define DO 265
-#define ENDWHILE 266
-#define IF 267
-#define THEN 268
-#define ENDIF 269
-#define ELSE 270
+#define MINUS 261
+#define SEMI 262
+#define LT 263
+#define LTEQ 264
+#define GT 265
+#define GTEQ 266
+#define EQ 267
+#define SPACESHIP 268
+#define NUM 269
+#define WHILE 270
+#define DO 271
+#define ENDWHILE 272
+#define IF 273
+#define THEN 274
+#define ENDIF 275
+#define ELSE 276
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
