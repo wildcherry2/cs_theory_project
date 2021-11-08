@@ -143,7 +143,8 @@ extern int yydebug;
     IF = 273,
     THEN = 274,
     ENDIF = 275,
-    ELSE = 276
+    ELSE = 276,
+    JUNK = 277
   };
 #endif
 /* Tokens.  */
@@ -166,6 +167,7 @@ extern int yydebug;
 #define THEN 274
 #define ENDIF 275
 #define ELSE 276
+#define JUNK 277
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -488,7 +490,7 @@ union yyalloc
 #define YYLAST   9
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  22
+#define YYNTOKENS  23
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  7
 /* YYNRULES -- Number of rules.  */
@@ -497,7 +499,7 @@ union yyalloc
 #define YYNSTATES  15
 
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   276
+#define YYMAXUTOK   277
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -536,7 +538,7 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
-      15,    16,    17,    18,    19,    20,    21
+      15,    16,    17,    18,    19,    20,    21,    22
 };
 
 #if YYDEBUG
@@ -554,8 +556,8 @@ static const char *const yytname[] =
 {
   "$end", "error", "$undefined", "VAR", "EQUAL", "PLUS", "MINUS", "SEMI",
   "LT", "LTEQ", "GT", "GTEQ", "EQ", "SPACESHIP", "NUM", "WHILE", "DO",
-  "ENDWHILE", "IF", "THEN", "ENDIF", "ELSE", "$accept", "stmts", "stmt",
-  "mexpr", "var1", "var2", "var", YY_NULLPTR
+  "ENDWHILE", "IF", "THEN", "ENDIF", "ELSE", "JUNK", "$accept", "stmts",
+  "stmt", "mexpr", "var1", "var2", "var", YY_NULLPTR
 };
 #endif
 
@@ -566,7 +568,7 @@ static const yytype_int16 yytoknum[] =
 {
        0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
      265,   266,   267,   268,   269,   270,   271,   272,   273,   274,
-     275,   276
+     275,   276,   277
 };
 # endif
 
@@ -626,14 +628,14 @@ static const yytype_int8 yycheck[] =
      symbol of state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,     3,    23,    24,    28,     0,    23,     4,     3,    25,
-      26,     7,     5,     3,    27
+       0,     3,    24,    25,    29,     0,    24,     4,     3,    26,
+      27,     7,     5,     3,    28
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    22,    23,    23,    24,    25,    26,    27,    28
+       0,    23,    24,    24,    25,    26,    27,    28,    29
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
@@ -1338,35 +1340,35 @@ yyreduce:
 #line 22 "project.yacc"
                                 { printf("yacc found stmt\n");
                                   printf("MOV %s, R0\n", destination); }
-#line 1342 "y.tab.c"
+#line 1344 "y.tab.c"
     break;
 
   case 5:
 #line 26 "project.yacc"
                                 { printf("yacc found mexpr\n"); }
-#line 1348 "y.tab.c"
+#line 1350 "y.tab.c"
     break;
 
   case 6:
 #line 28 "project.yacc"
                                 { printf("MOV R0, %s\n",varname); }
-#line 1354 "y.tab.c"
+#line 1356 "y.tab.c"
     break;
 
   case 7:
 #line 29 "project.yacc"
                                 { printf("ADD R0, %s\n",varname); }
-#line 1360 "y.tab.c"
+#line 1362 "y.tab.c"
     break;
 
   case 8:
 #line 31 "project.yacc"
                                 { strcpy(destination, varname); }
-#line 1366 "y.tab.c"
+#line 1368 "y.tab.c"
     break;
 
 
-#line 1370 "y.tab.c"
+#line 1372 "y.tab.c"
 
       default: break;
     }

@@ -29,7 +29,8 @@ endif		{printf("lex found endif\n"); return ENDIF;}
 "<>"            {printf("lex found spaceship\n"); return SPACESHIP;}
 "=="            {printf("lex found equal to\n"); return EQ;}
 [0-9]+		{printf("lex found num\n");return NUM;}
-.               ;
-\n              ;
+\n		;
+" "		;
+.		{printf("lex found junk\n"); return JUNK;}
 
 %%

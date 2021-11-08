@@ -67,7 +67,8 @@ extern int yydebug;
     IF = 273,
     THEN = 274,
     ENDIF = 275,
-    ELSE = 276
+    ELSE = 276,
+    JUNK = 277
   };
 #endif
 /* Tokens.  */
@@ -90,6 +91,7 @@ extern int yydebug;
 #define THEN 274
 #define ENDIF 275
 #define ELSE 276
+#define JUNK 277
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
