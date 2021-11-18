@@ -364,8 +364,8 @@ static const flex_int16_t yy_accept[48] =
     {   0,
         0,    0,   24,   22,   20,   21,    9,   10,   19,   12,
        13,   11,   15,    8,    8,    8,    8,    8,    8,   19,
-       14,   17,   18,   16,    8,    2,    8,    8,    4,    8,
-        8,    8,    8,    8,    8,    6,    8,    8,    5,    8,
+       14,   18,   16,    8,    2,    8,    8,    4,    8,    8,
+       17,    8,    8,    8,    8,    6,    8,    8,    5,    8,
         7,    8,    1,    8,    8,    3,    0
     } ;
 
@@ -411,18 +411,18 @@ static const YY_CHAR yy_meta[23] =
 static const flex_int16_t yy_base[49] =
     {   0,
         0,    0,   51,   52,   52,   52,   52,   52,   44,   52,
-       14,   40,   39,    0,   28,    8,   32,   30,   29,   37,
-       52,   52,   52,   52,    0,    0,   22,   29,    0,   27,
-       23,   25,   11,   19,   19,    0,   21,   19,    0,   19,
-        0,   15,    0,   13,   16,    0,   52,   26
+       40,   39,   38,    0,   27,    6,   31,   29,   28,   36,
+       31,   52,   52,    0,    0,   20,   27,    0,   25,   21,
+       52,   23,    9,   17,   17,    0,   19,   17,    0,   17,
+        0,   13,    0,   11,   14,    0,   52,   24
     } ;
 
 static const flex_int16_t yy_def[49] =
     {   0,
        47,    1,   47,   47,   47,   47,   47,   47,   47,   47,
        47,   47,   47,   48,   48,   48,   48,   48,   48,   47,
-       47,   47,   47,   47,   48,   48,   48,   48,   48,   48,
-       48,   48,   48,   48,   48,   48,   48,   48,   48,   48,
+       47,   47,   47,   48,   48,   48,   48,   48,   48,   48,
+       47,   48,   48,   48,   48,   48,   48,   48,   48,   48,
        48,   48,   48,   48,   48,   48,    0,   47
     } ;
 
@@ -430,9 +430,9 @@ static const flex_int16_t yy_nxt[75] =
     {   0,
         4,    5,    6,    7,    8,    9,   10,   11,   12,   13,
        14,   15,   16,   14,   14,   17,   14,   14,   14,   14,
-       18,   19,   21,   22,   27,   28,   37,   25,   46,   45,
-       44,   43,   38,   42,   41,   40,   39,   36,   35,   34,
-       33,   32,   20,   31,   30,   29,   26,   24,   23,   20,
+       18,   19,   26,   27,   37,   24,   46,   45,   44,   43,
+       38,   42,   41,   40,   39,   36,   35,   34,   33,   32,
+       31,   20,   30,   29,   28,   25,   23,   22,   21,   20,
        47,    3,   47,   47,   47,   47,   47,   47,   47,   47,
        47,   47,   47,   47,   47,   47,   47,   47,   47,   47,
        47,   47,   47,   47
@@ -442,9 +442,9 @@ static const flex_int16_t yy_chk[75] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,   11,   11,   16,   16,   33,   48,   45,   44,
-       42,   40,   33,   38,   37,   35,   34,   32,   31,   30,
-       28,   27,   20,   19,   18,   17,   15,   13,   12,    9,
+        1,    1,   16,   16,   33,   48,   45,   44,   42,   40,
+       33,   38,   37,   35,   34,   32,   30,   29,   27,   26,
+       21,   20,   19,   18,   17,   15,   13,   12,   11,    9,
         3,   47,   47,   47,   47,   47,   47,   47,   47,   47,
        47,   47,   47,   47,   47,   47,   47,   47,   47,   47,
        47,   47,   47,   47
@@ -751,123 +751,120 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 10 "project.lex"
-{printf("WHILE\n"); return WHILE;}
+{return WHILE;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
 #line 11 "project.lex"
-{printf("DO\n");return DO;}
+{return DO;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
 #line 12 "project.lex"
-{printf("ENDWHILE\n"); return ENDWHILE;}
+{return ENDWHILE;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
 #line 13 "project.lex"
-{printf("IF\n"); return IF;}
+{return IF;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
 #line 14 "project.lex"
-{printf("THEN\n"); return THEN;}
+{return THEN;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
 #line 15 "project.lex"
-{printf("ELSE\n"); return ELSE;}
+{return ELSE;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 16 "project.lex"
-{printf("ENDIF\n"); return ENDIF;}
+{return ENDIF;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
 #line 17 "project.lex"
-{printf ("VAR\n");
-                 // strcpy (varname, yytext);
-                  return VAR;
-                }
+{return VAR;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 21 "project.lex"
-{printf ("PLUS\n"); return PLUS; }
+#line 18 "project.lex"
+{return PLUS; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 22 "project.lex"
-{printf ("MINUS\n"); return MINUS; }
+#line 19 "project.lex"
+{return MINUS; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 23 "project.lex"
-{printf ("EQUAL\n"); return EQUAL; }
+#line 20 "project.lex"
+{return EQUAL; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 24 "project.lex"
-{printf ("SEMI\n"); return SEMI; }
+#line 21 "project.lex"
+{return SEMI; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 25 "project.lex"
-{printf("LT\n"); return LT;}
+#line 22 "project.lex"
+{return LT;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 26 "project.lex"
-{printf("LTEQ\n"); return LTEQ;}
+#line 23 "project.lex"
+{return LTEQ;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 27 "project.lex"
-{printf("GT\n"); return GT;}
+#line 24 "project.lex"
+{return GT;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 28 "project.lex"
-{printf("GTEQ\n"); return GTEQ;}
+#line 25 "project.lex"
+{return GTEQ;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 29 "project.lex"
-{printf("SPACESHIP\n"); return SPACESHIP;}
+#line 26 "project.lex"
+{return SPACESHIP;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 30 "project.lex"
-{printf("EQ\n"); return EQ;}
+#line 27 "project.lex"
+{return EQ;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 31 "project.lex"
-{printf("NUM\n");return NUM;}
+#line 28 "project.lex"
+{return NUM;}
 	YY_BREAK
 case 20:
 /* rule 20 can match eol */
 YY_RULE_SETUP
-#line 32 "project.lex"
+#line 29 "project.lex"
 ;
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 33 "project.lex"
+#line 30 "project.lex"
 ;
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 34 "project.lex"
-{printf("JUNK\n"); return JUNK;}
+#line 31 "project.lex"
+{return JUNK;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 36 "project.lex"
+#line 33 "project.lex"
 ECHO;
 	YY_BREAK
-#line 871 "lex.yy.c"
+#line 868 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1872,6 +1869,6 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 36 "project.lex"
+#line 33 "project.lex"
 
 

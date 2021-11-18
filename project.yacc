@@ -2,11 +2,11 @@
 #include <stdio.h>
 #include <string.h>
 extern int yylex();
+extern int yylineno;
 void yyerror(char *);
 
 char varname[20];
 char destination[20];
-
 %}
 
 %token VAR EQUAL PLUS MINUS SEMI LT LTEQ GT GTEQ EQ SPACESHIP NUM WHILE DO ENDWHILE IF THEN ENDIF ELSE JUNK
@@ -15,20 +15,43 @@ char destination[20];
 %%
 
 
-stmts:  stmt stmts
-        | stmt
+stmts:			stmt stmts
+			|stmt
 
 
-stmt:   var EQUAL mexpr SEMI    { printf("yacc found stmt\n");
-                                  printf("MOV %s, R0\n", destination); }
+stmt:			assignment				{printf("yacc found valid assignment statement\n");}
+			|while_loop				{printf("yacc found valid while loop\n");}
+			|if					{printf("yacc found valid if statement\n");}
 
+/*** ASSIGNMENT STATEMENT RULES ***/
+assignment:		VAR EQUAL expr additional_exprs SEMI
 
-mexpr:  var1 PLUS var2          { printf("yacc found mexpr\n"); }
+expr:			operand
+			|mexpr
 
-var1:   VAR                     { printf("MOV R0, %s\n",varname); }
-var2:   VAR                     { printf("ADD R0, %s\n",varname); }
+additional_exprs:	|arith_operator operand additional_exprs
+			
+mexpr:			operand arith_operator operand		
 
-var:    VAR                     { strcpy(destination, varname); }
+operand:		VAR
+			|NUM
+					
+arith_operator:		PLUS
+			|MINUS
+
+/*** CONDITIONAL STATEMENT RULES ***/
+conditional:		expr cond_operator expr
+
+cond_operator:		LT|LTEQ|GT|GTEQ|EQ|SPACESHIP
+
+/***WHILE LOOP RULES***/
+while_loop:		WHILE conditional DO stmts ENDWHILE SEMI
+
+/*** IF STATEMENT RULES ***/
+if:			IF conditional THEN stmts else ENDIF SEMI
+
+else:			|ELSE stmts					
+//var:			VAR					{strcpy(destination, varname);}
 
 
 %%
@@ -41,5 +64,5 @@ int main()
 
 void yyerror(char *msg)
 {
-   printf ("Oops, syntax error\n");
+   printf ("%s at line %d\n",msg,yylineno);
 }
