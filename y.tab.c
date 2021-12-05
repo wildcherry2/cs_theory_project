@@ -70,14 +70,100 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <stdbool.h>
 extern int yylex();
 extern int yylineno;
+
 void yyerror(char *);
+
+extern char* token_buffer[];
+extern int tbuf_size;
+
+void PrintAssignment(){
+	int tindex = tbuf_size - 3;
+	//printf("%s\n",token_buffer[tindex]);
+	//if(strcmp(token_buffer[tindex],";")){
+	//	tindex--;
+	//}
+	if(tindex < 2){return;} //might not need this
+	char* operand_right;
+	char* operation;
+	char* operand_left;
+
+	operand_right = (char*)calloc(strlen(token_buffer[tindex]),sizeof(char));
+	memcpy(operand_right,token_buffer[tindex],strlen(token_buffer[tindex]));
+	tindex--;
+		
+	operation = (char*)calloc(1,sizeof(char));
+	memcpy(operation,token_buffer[tindex],1);
+	tindex--;
+	
+	operand_left = (char*)calloc(strlen(token_buffer[tindex]),sizeof(char));
+        memcpy(operand_left,token_buffer[tindex],strlen(token_buffer[tindex]));
+        tindex--;
+	
+	//printf("%s\n%s\n%s\n",operand_left,operation,operand_right);
+	
+	bool parsing = true;
+	bool once = true;	
+	while(parsing == true){
+		if(strcmp(operation,"=") == 0){
+			if(once){
+				printf("MOV	R1,%s\n",operand_right);
+				printf("MOV	%s,R1\n",operand_left);
+			}
+			else{
+				printf("MOV	%s,R1\n",operand_left);
+			}
+			parsing = false;
+		}
+		else{ 
+			if(strcmp(operation,"+") == 0){
+				printf("MOV	R2,%s\n",operand_right);
+				printf("MOV	R1,%s\n",operand_left);
+				printf("ADD	R1,R2\n");
+			}
+			else{
+				printf("MOV	R2,%s\n",operand_right);
+				printf("MOV	R1,%s\n",operand_left);
+				printf("SUB	R1,R2\n");
+			}
+			
+			free(operand_right);
+			operand_right = (char*)calloc(strlen(operand_left),sizeof(char));
+			memcpy(operand_right,operand_left,strlen(operand_left));
+			free(operand_left);
+			//printf("MOV	R2,R1\n");
+			//printf("swapped\n");
+			
+			//tindex--;
+			memcpy(operation,token_buffer[tindex],1);
+			//printf("op copied%s\n",operation);
+			
+			tindex--;
+			operand_left = (char*)calloc(strlen(token_buffer[tindex]),sizeof(char));
+			memcpy(operand_left,token_buffer[tindex],strlen(token_buffer[tindex]));
+
+			once = false;
+		}
+	}
+
+	free(operand_left);
+	free(operand_right);
+	free(operation);
+	//for(int i = 0; i < tbuf_size - 1;i++){
+	//	free(token_buffer[i]);
+	//}
+	tbuf_size = 1;
+}
+
+char* instruction_buffer[10000];
 
 char varname[20];
 char destination[20];
 
-#line 81 "y.tab.c"
+#line 167 "y.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -543,11 +629,11 @@ static const yytype_int8 yytranslate[] =
 
 #if YYDEBUG
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
-static const yytype_int8 yyrline[] =
+static const yytype_uint8 yyrline[] =
 {
-       0,    18,    18,    19,    22,    23,    24,    27,    29,    30,
-      32,    32,    34,    36,    37,    39,    40,    43,    45,    45,
-      45,    45,    45,    45,    48,    51,    53,    53
+       0,   104,   104,   105,   108,   109,   110,   113,   115,   116,
+     118,   118,   120,   122,   123,   125,   126,   129,   131,   131,
+     131,   131,   131,   131,   134,   137,   139,   139
 };
 #endif
 
@@ -1362,25 +1448,13 @@ yyreduce:
   switch (yyn)
     {
   case 4:
-#line 22 "project.yacc"
-                                                                {printf("yacc found valid assignment statement\n");}
-#line 1368 "y.tab.c"
-    break;
-
-  case 5:
-#line 23 "project.yacc"
-                                                                {printf("yacc found valid while loop\n");}
-#line 1374 "y.tab.c"
-    break;
-
-  case 6:
-#line 24 "project.yacc"
-                                                                {printf("yacc found valid if statement\n");}
-#line 1380 "y.tab.c"
+#line 108 "project.yacc"
+                                                                {PrintAssignment();}
+#line 1454 "y.tab.c"
     break;
 
 
-#line 1384 "y.tab.c"
+#line 1458 "y.tab.c"
 
       default: break;
     }
@@ -1612,7 +1686,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 57 "project.yacc"
+#line 143 "project.yacc"
 
 
 
